@@ -5,7 +5,6 @@ import edu.system.serve.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,10 +18,9 @@ public class UserController {
 
 
     @PostMapping("/api/v1/login")
-    public String userLogin(@RequestBody User user) {
-        List<User> user1 = userService.queryUser(user.getUsername(), user.getPassword());
-        System.out.println(user1.size());
+    public Map<String, String> userLogin(@RequestBody User user) {
+        Map<String, String> map = userService.queryUser(user.getUsername(), user.getPassword());
 
-        return "success";
+        return map;
     }
 }
