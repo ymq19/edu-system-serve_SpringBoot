@@ -18,8 +18,8 @@ public class UserController {
 
 
     @PostMapping("/api/v1/login")
-    public Map<String, String> userLogin(@RequestBody User user) {
-        Map<String, String> map = userService.queryUser(user.getUsername(), user.getPassword());
+    public Map<String, Object> userLogin(@RequestBody User user) {
+        Map<String, Object> map = userService.queryUser(user.getUsername(), user.getPassword());
 
         return map;
     }
