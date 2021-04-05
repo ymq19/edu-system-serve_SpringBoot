@@ -33,4 +33,4 @@ spring:
 # 整合Mybatis
 mybatis:
   type-aliases-package: edu.sytem.serve.pojo
-  mapper-locations: classpath:mybatis/mapper/*.xml
+  mapper-locations: classpath:mybatis/mapper/*/*.xml

@@ -1,4 +1,4 @@
-package edu.system.serve.mapper;
+package edu.system.serve.mapper.student;
 
 import edu.system.serve.pojo.student.User;
 import org.apache.ibatis.annotations.Mapper;

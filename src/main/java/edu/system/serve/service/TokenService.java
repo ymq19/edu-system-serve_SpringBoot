@@ -16,7 +16,7 @@ public class TokenService {
     public String getToken() {
         Date start = new Date();
         // 一分钟有效时间
-        long validateTime = System.currentTimeMillis() + 60 * 1000;
+        long validateTime = System.currentTimeMillis() + 2 * 60 * 60 * 1000;
         Date end = new Date(validateTime);
 
         return JWT.create().withIssuedAt(start)

@@ -1,5 +1,8 @@
 package edu.system.serve.pojo.student;
 
+/**
+ * 学生用户类
+ */
 public class User {
     private String username;
     private String name;

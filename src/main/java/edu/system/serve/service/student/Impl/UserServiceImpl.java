@@ -1,9 +1,9 @@
-package edu.system.serve.service.Impl;
+package edu.system.serve.service.student.Impl;
 
-import edu.system.serve.mapper.UserMapper;
+import edu.system.serve.mapper.student.UserMapper;
 import edu.system.serve.pojo.student.User;
 import edu.system.serve.service.TokenService;
-import edu.system.serve.service.UserService;
+import edu.system.serve.service.student.UserService;
 import edu.system.serve.utils.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
