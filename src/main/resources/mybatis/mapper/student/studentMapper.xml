@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.system.serve.mapper.student.StudentMapper">
+    <select id="getProfile" resultType="edu.system.serve.pojo.student.Student">
+        select sex, sage, admi_date, school, sdept, email, tel, hobby, intro from student where sno = #{sno}
+    </select>
+</mapper>
