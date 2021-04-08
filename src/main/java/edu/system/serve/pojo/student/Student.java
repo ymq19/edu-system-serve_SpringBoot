@@ -1,5 +1,7 @@
 package edu.system.serve.pojo.student;
 
+import edu.system.serve.pojo.teacher.Teacher;
+
 /**
  * 学生实体类
  */
@@ -137,4 +139,5 @@ public class Student {
                 ", intro='" + intro + '\'' +
                 '}';
     }
+
 }

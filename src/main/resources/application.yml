@@ -1,5 +1,8 @@
 # jdbc配置数据库
 spring:
+  jackson:
+    # 不返回空字段
+    default-property-inclusion: non_null
   datasource:
     username: "ymq19"
     password: "YMQ19991105"

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * 跨域设置
+ * 跨域设置和token验证
  */
 @Configuration
 public class CrossOriginConfig {

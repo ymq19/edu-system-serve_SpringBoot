@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.system.serve.mapper.student.CourseMapper">
+    <resultMap id="courseQuery" type="edu.system.serve.pojo.student.Course">
+        <id property="cno" column="cno" />
+        <result property="cname" column="cname" />
+        <result property="cpno" column="cpno" />
+        <result property="ccredit" column="ccredit" />
+        <result property="tno" column="tno" />
+        <result property="capacity" column="capacity" />
+        <association property="teacher" javaType="edu.system.serve.pojo.teacher.Teacher">
+            <id property="tno" column="tno" />
+            <result property="name" column="teacher" />
+        </association>
+    </resultMap>
+    <select id="getCourse" parameterType="int" resultMap="courseQuery">
+        (SELECT cno, cname, ccredit, cpno, cpno as prename, teacher.name AS teacher, course.tno, capacity FROM course, teacher WHERE cpno IS NULL AND teacher.tno = course.tno UNION SELECT FIRST .cno, FIRST .cname, FIRST .ccredit, FIRST .cpno, SECOND .cname AS precname, teacher .name AS teacher, FIRST .tno, FIRST .capacity FROM course FIRST, course SECOND, teacher WHERE FIRST .cpno = SECOND .cno AND teacher.tno = FIRST .tno) ORDER BY cno ASC LIMIT ${num}
+    </select>
+</mapper>
