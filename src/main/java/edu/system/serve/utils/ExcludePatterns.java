@@ -16,6 +16,8 @@ public class ExcludePatterns {
             "/webjars/**",
             "/",
 
-            "/api/v1/login"
+            "/api/v1/login",
+            // 图片路径
+            "/api/v1/avatar/images/*"
     );
 }
