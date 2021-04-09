@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.system.serve.mapper.teacher.TeachingTaskMapper">
+    <select id="getTeachNotice" resultType="edu.system.serve.pojo.teacher.TeachingTask">
+        SELECT title, content, time FROM teaching_tasks WHERE cno IN ( SELECT cno FROM sc WHERE sno = #{sno}) limit ${limitNum}
+    </select>
+</mapper>
