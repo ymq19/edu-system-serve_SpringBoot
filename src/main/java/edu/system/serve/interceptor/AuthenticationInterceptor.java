@@ -1,5 +1,6 @@
 package edu.system.serve.interceptor;
 
+import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -31,9 +32,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {
             // token过期
-            String tokenExpire = "{'status': '" +  StatusCode.TOKEN_EXPIRE_CODE + "'}";
+            String tokenExpire = "{status: " +  StatusCode.TOKEN_EXPIRE_CODE + "}";
 
-            response.getWriter().println(tokenExpire);
+            JSONObject tokenObject = JSONObject.parseObject(tokenExpire);
+            response.getWriter().println(tokenObject);
             return false;
         }
 

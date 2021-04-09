@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.system.serve.mapper.student.SCMapper">
+    <select id="getGrade" resultType="edu.system.serve.pojo.student.SC">
+        select sc.cno, cname, gradepo, grade from sc, course where sno = #{sno} and sc.cno = course.cno limit ${limitNum}
+    </select>
+</mapper>
