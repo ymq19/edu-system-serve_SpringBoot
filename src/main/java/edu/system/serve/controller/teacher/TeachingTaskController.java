@@ -23,4 +23,14 @@ public class TeachingTaskController {
 
         return teachingTaskService.getTeachNotice(sno, Integer.parseInt(limit));
     }
+
+    @GetMapping("/api/v1/notice/{sno}/all")
+    public Map<String, List> getAllTeachTask(@PathVariable String sno) {
+        return teachingTaskService.getAllTeachNotice(sno);
+    }
+
+    @GetMapping("/api/v1/notice/{sno}/course/{cno}/all")
+    public Map<String, List<TeachingTask>> getAllTeachTaskBySno(@PathVariable String cno) {
+        return teachingTaskService.getAllTeachNoticeBySno(cno);
+    }
 }

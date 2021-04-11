@@ -21,4 +21,10 @@ public class CourseController {
 
         return courseService.getCourse(num);
     }
+
+    @GetMapping("/api/v1/course/all")
+    public Map<String, List<Map<String, Object>>> getAllCourse() {
+        return courseService.getAllCourse();
+    }
+
 }

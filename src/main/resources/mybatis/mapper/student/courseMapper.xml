@@ -6,7 +6,19 @@
     <resultMap id="courseQuery" type="edu.system.serve.pojo.student.Course">
         <id property="cno" column="cno" />
         <result property="cname" column="cname" />
-        <result property="cpno" column="cpno" />
+        <result property="prename" column="prename" />
+        <result property="ccredit" column="ccredit" />
+        <result property="tno" column="tno" />
+        <result property="capacity" column="capacity" />
+        <association property="teacher" javaType="edu.system.serve.pojo.teacher.Teacher">
+            <id property="tno" column="tno" />
+            <result property="name" column="teacher" />
+        </association>
+    </resultMap>
+    <resultMap id="courseAllQuery" type="edu.system.serve.pojo.student.Course">
+        <id property="cno" column="cno"/>
+        <result property="cname" column="cname" />
+        <result property="prename" column="prename" />
         <result property="ccredit" column="ccredit" />
         <result property="tno" column="tno" />
         <result property="capacity" column="capacity" />
@@ -17,5 +29,11 @@
     </resultMap>
     <select id="getCourse" parameterType="int" resultMap="courseQuery">
         (SELECT cno, cname, ccredit, cpno, cpno as prename, teacher.name AS teacher, course.tno, capacity FROM course, teacher WHERE cpno IS NULL AND teacher.tno = course.tno UNION SELECT FIRST .cno, FIRST .cname, FIRST .ccredit, FIRST .cpno, SECOND .cname AS precname, teacher .name AS teacher, FIRST .tno, FIRST .capacity FROM course FIRST, course SECOND, teacher WHERE FIRST .cpno = SECOND .cno AND teacher.tno = FIRST .tno) ORDER BY cno ASC LIMIT ${num}
+    </select>
+    <select id="getAllCourse" resultMap="courseAllQuery">
+        (SELECT cno, cname, ccredit, cpno, cpno as prename, teacher.name AS teacher, course.tno, capacity FROM course, teacher WHERE cpno IS NULL And teacher.tno = course.tno UNION SELECT FIRST .cno, FIRST .cname, FIRST .ccredit, FIRST .cpno, SECOND .cname AS precname, teacher .name AS teacher, FIRST .tno, FIRST .capacity FROM course FIRST, course SECOND, teacher WHERE FIRST .cpno = SECOND .cno AND teacher.tno = FIRST .tno) ORDER BY cno ASC
+    </select>
+    <select id="getCourseName" resultType="edu.system.serve.pojo.student.Course">
+        SELECT sc.cno, cname from sc, course where sno = #{sno} and  sc.cno = course.cno
     </select>
 </mapper>

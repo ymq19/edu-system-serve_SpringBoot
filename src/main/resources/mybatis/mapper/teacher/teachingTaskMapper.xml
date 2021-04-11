@@ -6,4 +6,10 @@
     <select id="getTeachNotice" resultType="edu.system.serve.pojo.teacher.TeachingTask">
         SELECT title, content, time FROM teaching_tasks WHERE cno IN ( SELECT cno FROM sc WHERE sno = #{sno}) limit ${limitNum}
     </select>
+    <select id="getAllTeachNotice" resultType="edu.system.serve.pojo.teacher.TeachingTask">
+        SELECT title, content, time FROM teaching_tasks WHERE cno = #{cno}
+    </select>
+    <select id="getAllTeachNoticeBySno" resultType="edu.system.serve.pojo.teacher.TeachingTask">
+        SELECT title, content, time FROM teaching_tasks WHERE cno = #{cno}
+    </select>
 </mapper>

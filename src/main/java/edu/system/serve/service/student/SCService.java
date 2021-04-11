@@ -7,4 +7,5 @@ import java.util.Map;
 
 public interface SCService {
     Map<String, List<SC>> getGrade(String sno, Integer limitNum);
+    Map<String, List<SC>> getAllGrade(String sno);
 }

@@ -21,11 +21,23 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Map<String, List<Map<String, Object>>> getCourse(Integer num) {
         List<Course> courses = courseMapper.getCourse(num);
+
+        return objectToMap(courses);
+    }
+
+    @Override
+    public Map<String, List<Map<String, Object>>> getAllCourse() {
+        List<Course> courses = courseMapper.getAllCourse();
+
+        return objectToMap(courses);
+    }
+
+    // 实体类转Map
+    private Map<String, List<Map<String, Object>>> objectToMap(List<Course> courses) {
         List<Map<String, Object>> mapList = new ArrayList<>();
         Map<String, List<Map<String, Object>>> map = new HashMap<>();
 
         for (Course course : courses) {
-            // 实体类转Map
             Map<String, Object> courseMap = JSON.parseObject(JSON.toJSONString(course), Map.class);
             courseMap.replace("teacher", course.getTeacher().getName());
             mapList.add(courseMap);

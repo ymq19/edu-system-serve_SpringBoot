@@ -23,4 +23,12 @@ public class SCServiceImpl implements SCService {
         map.put("result", scMapper.getGrade(sno, limitNum));
         return map;
     }
+
+    @Override
+    public Map<String, List<SC>> getAllGrade(String sno) {
+        Map<String, List<SC>> map = new HashMap<>();
+
+        map.put("result", scMapper.getAllGrade(sno));
+        return map;
+    }
 }

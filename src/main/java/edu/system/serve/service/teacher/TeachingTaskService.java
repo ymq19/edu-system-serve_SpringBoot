@@ -7,4 +7,6 @@ import java.util.Map;
 
 public interface TeachingTaskService {
     Map<String, List<TeachingTask>> getTeachNotice(String sno, Integer limitNum);
+    Map<String, List> getAllTeachNotice(String sno);
+    Map<String, List<TeachingTask>> getAllTeachNoticeBySno(String cno);
 }

@@ -6,4 +6,7 @@
     <select id="getGrade" resultType="edu.system.serve.pojo.student.SC">
         select sc.cno, cname, gradepo, grade from sc, course where sno = #{sno} and sc.cno = course.cno limit ${limitNum}
     </select>
+    <select id="getAllGrade" resultType="edu.system.serve.pojo.student.SC">
+        select sc.cno, cname, gradepo, grade from sc, course where sno = #{sno} and sc.cno = course.cno
+    </select>
 </mapper>

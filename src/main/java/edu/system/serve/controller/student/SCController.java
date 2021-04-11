@@ -20,4 +20,9 @@ public class SCController {
     public Map<String, List<SC>> getGrade(@RequestParam String sno, @RequestParam String limit) {
         return service.getGrade(sno, Integer.parseInt(limit));
     }
+
+    @GetMapping("/api/v1/grade/all")
+    public Map<String, List<SC>> getAllGrade(@RequestParam String sno) {
+        return service.getAllGrade(sno);
+    }
 }

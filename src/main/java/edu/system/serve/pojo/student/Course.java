@@ -5,7 +5,7 @@ import edu.system.serve.pojo.teacher.Teacher;
 public class Course {
     private String cno;
     private String cname;
-    private String cpno;
+    private String prename;
     private Integer ccredit;
     private String tno;
     private Integer capacity;
@@ -22,10 +22,10 @@ public class Course {
         this.teacher = teacher;
     }
 
-    public Course(String cno, String cname, String cpno, Integer ccredit, String tno, Integer capacity) {
+    public Course(String cno, String cname, String prename, Integer ccredit, String tno, Integer capacity) {
         this.cno = cno;
         this.cname = cname;
-        this.cpno = cpno;
+        this.prename = prename;
         this.ccredit = ccredit;
         this.tno = tno;
         this.capacity = capacity;
@@ -47,12 +47,12 @@ public class Course {
         this.cname = cname;
     }
 
-    public String getCpno() {
-        return cpno;
+    public String getPrename() {
+        return prename;
     }
 
-    public void setCpno(String cpno) {
-        this.cpno = cpno;
+    public void setPrename(String prename) {
+        this.prename = prename;
     }
 
     public Integer getCcredit() {
@@ -80,7 +80,7 @@ public class Course {
         return "Course{" +
                 "cno='" + cno + '\'' +
                 ", cname='" + cname + '\'' +
-                ", cpno='" + cpno + '\'' +
+                ", prename='" + prename + '\'' +
                 ", ccredit=" + ccredit +
                 ", tno='" + tno + '\'' +
                 ", capacity=" + capacity +
