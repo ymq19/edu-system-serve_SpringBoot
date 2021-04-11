@@ -4,9 +4,11 @@ import edu.system.serve.mapper.student.UserMapper;
 import edu.system.serve.pojo.student.User;
 import edu.system.serve.service.TokenService;
 import edu.system.serve.service.student.UserService;
+import edu.system.serve.utils.FileUpload;
 import edu.system.serve.utils.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,6 +39,17 @@ public class UserServiceImpl implements UserService {
             map.put("status", StatusCode.ERROR_CODE);
             map.put("message", "用户名或密码错误");
         }
+        return map;
+    }
+
+    @Override
+    public Map<String, String> addAvatar(String username, MultipartFile imgUrl) {
+        FileUpload fileUpload = new FileUpload(imgUrl);
+        Map<String, String> map = new HashMap<>();
+        String fileUrl = fileUpload.upload();
+
+        userMapper.addAvatar(username, fileUrl);
+        map.put("url", fileUrl);
         return map;
     }
 }
