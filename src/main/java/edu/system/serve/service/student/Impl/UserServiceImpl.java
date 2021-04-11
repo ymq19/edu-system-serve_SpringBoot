@@ -1,5 +1,6 @@
 package edu.system.serve.service.student.Impl;
 
+import com.alibaba.fastjson.JSON;
 import edu.system.serve.mapper.student.UserMapper;
 import edu.system.serve.pojo.student.User;
 import edu.system.serve.service.TokenService;
@@ -8,6 +9,7 @@ import edu.system.serve.utils.FileUpload;
 import edu.system.serve.utils.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
@@ -51,5 +53,31 @@ public class UserServiceImpl implements UserService {
         userMapper.addAvatar(username, fileUrl);
         map.put("url", fileUrl);
         return map;
+    }
+
+    @Override
+    public void updateProfile(String sno, String data) {
+        Map<String, String> map = JSON.parseObject(data, Map.class);
+        userMapper.updateProfile(sno, map);
+
+    }
+
+    @Transactional
+    @Override
+    public Map<String, Object> updatePassword(String username, String passwordSet) {
+        Map<String, String> map = JSON.parseObject(passwordSet, Map.class);
+        // 密码是否输入正确
+        if (userMapper.queryUser(username, map.get("oldPassword")).size() != 0) {
+            userMapper.updatePassword(username, map.get("password"));
+            Map<String, Object> stringMap = new HashMap<>();
+
+            stringMap.put("status", StatusCode.SUCCESS_CODE);
+            return stringMap;
+        }
+
+        Map<String, Object> stringMap = new HashMap<>();
+        stringMap.put("status", StatusCode.ERROR_CODE);
+
+        return stringMap;
     }
 }

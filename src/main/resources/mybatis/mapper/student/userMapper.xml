@@ -9,4 +9,10 @@
     <update id="addAvatar">
         update user set avatar = #{imgUrl} where username = #{username}
     </update>
+    <update id="updateProfile" statementType="STATEMENT">
+        update student set email = "${info.get("email")}", tel = "${info.get("tel")}", hobby = "${info.get("hobby")}", intro = "${info.get("intro")}" where sno = "${sno}"
+    </update>
+    <update id="updatePassword">
+        update user set password = #{password} where username = #{username}
+    </update>
 </mapper>
