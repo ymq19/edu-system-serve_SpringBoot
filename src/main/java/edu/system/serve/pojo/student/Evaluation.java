@@ -1,5 +1,8 @@
 package edu.system.serve.pojo.student;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "教学信息")
 public class Evaluation {
     // 课程号
     private String cno;

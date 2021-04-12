@@ -1,8 +1,11 @@
 package edu.system.serve.pojo.student;
 
+import io.swagger.annotations.ApiModel;
+
 /**
  * 学生用户类
  */
+@ApiModel(description = "用户")
 public class User {
     private String username;
     private String name;

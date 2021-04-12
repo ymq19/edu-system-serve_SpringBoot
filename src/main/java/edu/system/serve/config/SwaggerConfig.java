@@ -23,10 +23,20 @@ public class SwaggerConfig {
     public Docket docket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
-                .groupName("Alex Yu")
+                .groupName("学生接口")
                 .select()
                 // 要扫描的包
-                .apis(RequestHandlerSelectors.basePackage("edu.system.serve.controller"))
+                .apis(RequestHandlerSelectors.basePackage("edu.system.serve.controller.student"))
+                .build();
+    }
+
+    @Bean
+    public Docket docket2() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("教师接口")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("edu.system.server.controller.teacher"))
                 .build();
     }
 

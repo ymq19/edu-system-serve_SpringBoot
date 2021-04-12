@@ -11,9 +11,6 @@ import java.util.UUID;
 public class FileUpload {
     private MultipartFile file;
 
-    @Autowired
-    Environment environment;
-
     public FileUpload(MultipartFile file) {
         this.file = file;
     }

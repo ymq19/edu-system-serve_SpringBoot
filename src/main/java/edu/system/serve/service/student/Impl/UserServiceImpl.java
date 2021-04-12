@@ -7,6 +7,7 @@ import edu.system.serve.service.TokenService;
 import edu.system.serve.service.student.UserService;
 import edu.system.serve.utils.FileUpload;
 import edu.system.serve.utils.StatusCode;
+import edu.system.serve.utils.UserLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,25 +24,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
-    @Autowired
-    TokenService tokenService;
-
     @Override
     public Map<String, Object> queryUser(String username, String password) {
         List<User> userList = userMapper.queryUser(username, password);
-        Map<String, Object> map = new HashMap<>();
 
-        // 查询到登录有该账号
-        if (userList.size() != 0) {
-            map.put("name", userList.get(0).getName());
-            map.put("url", userList.get(0).getAvatar());
-            map.put("status", StatusCode.SUCCESS_CODE);
-            map.put("token", tokenService.getToken());
-        } else {
-            map.put("status", StatusCode.ERROR_CODE);
-            map.put("message", "用户名或密码错误");
-        }
-        return map;
+        UserLogin userLogin = new UserLogin();
+        return userLogin.login(userList);
     }
 
     @Override
