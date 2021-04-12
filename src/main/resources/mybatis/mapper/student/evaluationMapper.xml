@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.system.serve.mapper.student.EvaluationMapper">
+    <select id="getEvaluation" resultType="edu.system.serve.pojo.student.Evaluation">
+        SELECT sc.cno, cname, course.tno, teacher.name AS teacher, evaluation FROM (sc INNER JOIN course ON sc.sno = #{sno} AND sc.cno = course.cno INNER JOIN teacher ON teacher.tno = course.tno) LEFT OUTER JOIN teaching_eval ON course.tno = teaching_eval.tno AND teaching_eval.sno = #{sno}
+    </select>
+    <update id="setEvaluation">
+        replace into teaching_eval values(#{tno}, #{evaluation}, #{sno})
+    </update>
+</mapper>
