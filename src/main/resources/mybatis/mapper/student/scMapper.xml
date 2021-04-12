@@ -9,4 +9,16 @@
     <select id="getAllGrade" resultType="edu.system.serve.pojo.student.SC">
         select sc.cno, cname, gradepo, grade from sc, course where sno = #{sno} and sc.cno = course.cno
     </select>
+    <select id="getCourseBySno" resultType="edu.system.serve.pojo.student.SC">
+        select cno from sc where sno = #{sno}
+    </select>
+    <select id="getCourseSelectedNum" resultType="edu.system.serve.pojo.student.SC">
+        SELECT cno, COUNT(cno) as num FROM sc GROUP BY cno
+    </select>
+    <insert id="addCourse">
+        insert into sc (sno, cno, grade, gradepo) values(#{sno}, #{cno} , NULL, NULL)
+    </insert>
+    <delete id="deleteCourse">
+        delete from sc where sno = #{sno} and cno = #{cno}
+    </delete>
 </mapper>

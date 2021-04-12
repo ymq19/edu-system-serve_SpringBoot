@@ -15,5 +15,4 @@ public interface CourseMapper {
     List<Course> getAllCourse();
     // 获取课程名字
     List<Course> getCourseName(String sno);
-
 }

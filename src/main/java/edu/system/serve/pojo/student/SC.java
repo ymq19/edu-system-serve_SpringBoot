@@ -6,15 +6,19 @@ public class SC {
     private Integer grade;
     private Double gradepo;
 
+    // 选课人数
+    private Integer num;
+
     // 课程名
     private String cname;
 
-    public SC(String sno, String cno, Integer grade, Double gradepo, String cname) {
+    public SC(String sno, String cno, Integer grade, Double gradepo, String cname, Integer num) {
         this.sno = sno;
         this.cno = cno;
         this.grade = grade;
         this.gradepo = gradepo;
         this.cname = cname;
+        this.num = num;
     }
 
     public SC() {
@@ -60,6 +64,14 @@ public class SC {
         this.cname = cname;
     }
 
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
     @Override
     public String toString() {
         return "SC{" +
@@ -67,6 +79,7 @@ public class SC {
                 ", cno='" + cno + '\'' +
                 ", grade=" + grade +
                 ", gradepo=" + gradepo +
+                ", num=" + num +
                 ", cname='" + cname + '\'' +
                 '}';
     }
