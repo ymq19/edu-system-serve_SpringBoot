@@ -4,33 +4,36 @@ import edu.system.serve.pojo.teacher.TeachingTask;
 import edu.system.serve.service.teacher.TeachingTaskService;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api/v1")
 public class TeachingTaskController {
 
     @Autowired
     TeachingTaskService teachingTaskService;
 
-    @GetMapping("/api/v1/notice/{sno}")
+    @GetMapping("/notice/{sno}")
     public Map<String, List<TeachingTask>> getTeachTask(@PathVariable String sno, @RequestParam String limit) {
 
         return teachingTaskService.getTeachNotice(sno, Integer.parseInt(limit));
     }
 
-    @GetMapping("/api/v1/notice/{sno}/all")
+    @GetMapping("/notice/{sno}/all")
     public Map<String, List> getAllTeachTask(@PathVariable String sno) {
         return teachingTaskService.getAllTeachNotice(sno);
     }
 
-    @GetMapping("/api/v1/notice/{sno}/course/{cno}/all")
+    @GetMapping("/notice/{sno}/course/{cno}/all")
     public Map<String, List<TeachingTask>> getAllTeachTaskBySno(@PathVariable String cno) {
         return teachingTaskService.getAllTeachNoticeBySno(cno);
+    }
+
+    @GetMapping("/teacher/info/{tno}/tasks")
+    public Map<String, List<TeachingTask>> getTTeachTask(@PathVariable String tno, @RequestParam String limit) {
+        return teachingTaskService.getTTeachNotice(tno, limit);
     }
 }

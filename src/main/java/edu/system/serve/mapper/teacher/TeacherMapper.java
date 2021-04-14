@@ -10,4 +10,5 @@ import java.util.List;
 @Repository
 public interface TeacherMapper {
     List<Teacher> getProfile(String tno);
+    void updateProfile(String tno, String name, String sex, Integer age, String email, String tel, String intro);
 }

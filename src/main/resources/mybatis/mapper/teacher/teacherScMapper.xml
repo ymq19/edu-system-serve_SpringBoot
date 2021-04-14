@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.system.serve.mapper.teacher.TeacherSCMapper">
+    <select id="getGrade" resultType="edu.system.serve.pojo.teacher.SCName">
+        SELECT FIRST .sno, SECOND .sname, cname, grade, gradepo FROM sc FIRST, student SECOND, course THRID WHERE FIRST.sno = SECOND.sno and FIRST.cno = THRID.cno and tno = #{tno} limit ${limitNum}
+    </select>
+</mapper>

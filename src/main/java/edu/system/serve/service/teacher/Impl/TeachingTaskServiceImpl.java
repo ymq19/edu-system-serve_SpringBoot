@@ -51,4 +51,12 @@ public class TeachingTaskServiceImpl implements TeachingTaskService {
 
         return map;
     }
+
+    @Override
+    public Map<String, List<TeachingTask>> getTTeachNotice(String tno, String limitNum) {
+        Map<String, List<TeachingTask>> map = new HashMap<>();
+
+        map.put("result", teachingTaskMapper.getTTeachNotice(tno, limitNum));
+        return map;
+    }
 }

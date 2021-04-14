@@ -18,6 +18,7 @@ public class ExcludePatterns {
 
             "/api/v1/login",
             "/api/v1/teacher/login",
+            "/api/v1/reset/*",
             // 图片路径
             "/api/v1/avatar/images/*"
     );

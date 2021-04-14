@@ -1,5 +1,6 @@
 package edu.system.serve.service.student.Impl;
 
+import com.alibaba.fastjson.JSON;
 import edu.system.serve.mapper.student.StudentMapper;
 import edu.system.serve.pojo.student.Student;
 import edu.system.serve.service.student.StudentService;
@@ -22,5 +23,11 @@ public class StudentServiceImpl implements StudentService {
 
         map.put("result", studentMapper.getProfile(sno));
         return map;
+    }
+
+    @Override
+    public void updateProfile(String sno, String data) {
+        Map<String, String> map = JSON.parseObject(data, Map.class);
+        studentMapper.updateProfile(sno, map);
     }
 }

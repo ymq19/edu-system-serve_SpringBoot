@@ -28,11 +28,6 @@ public class UserController {
         return userService.addAvatar(username, image);
     }
 
-    @PutMapping("/profile/{sno}")
-    public void updateProfile(@PathVariable String sno, @RequestBody String data) {
-        userService.updateProfile(sno, data);
-    }
-
     @PutMapping("/reset/{username}")
     public Map<String, Object> updatePassword(@PathVariable String username, @RequestBody String data) {
         return userService.updatePassword(username, data);

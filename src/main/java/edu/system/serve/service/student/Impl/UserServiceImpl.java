@@ -43,13 +43,6 @@ public class UserServiceImpl implements UserService {
         return map;
     }
 
-    @Override
-    public void updateProfile(String sno, String data) {
-        Map<String, String> map = JSON.parseObject(data, Map.class);
-        userMapper.updateProfile(sno, map);
-
-    }
-
     @Transactional
     @Override
     public Map<String, Object> updatePassword(String username, String passwordSet) {

@@ -6,4 +6,7 @@
     <select id="getProfile" resultType="edu.system.serve.pojo.student.Student">
         select sex, sage, admi_date, school, sdept, email, tel, hobby, intro from student where sno = #{sno}
     </select>
+    <update id="updateProfile">
+        update student set email = "${info.get("email")}", tel = "${info.get("tel")}", hobby = "${info.get("hobby")}", intro = "${info.get("intro")}" where sno = "${sno}"
+    </update>
 </mapper>

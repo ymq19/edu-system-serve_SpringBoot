@@ -28,10 +28,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256("ymq19")).build();
 
-        if (token == null) {
-            return false;
-        }
-
         try {
             jwtVerifier.verify(token);
         } catch (JWTVerificationException e) {

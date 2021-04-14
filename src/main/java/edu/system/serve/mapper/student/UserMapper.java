@@ -12,6 +12,5 @@ import java.util.Map;
 public interface UserMapper {
     List<User> queryUser(String username, String password);
     void addAvatar(String username, String imgUrl);
-    void updateProfile(String sno, Map<String, String> info);
     void updatePassword(String username, String password);
 }

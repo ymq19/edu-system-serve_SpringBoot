@@ -6,4 +6,7 @@
     <select id="getProfile" resultType="edu.system.serve.pojo.teacher.Teacher">
         select sex, age, email, tel, intro from teacher where tno = #{tno}
     </select>
+    <update id="updateProfile">
+        update teacher set name = #{name}, sex = #{sex}, age = #{age}, email = #{email}, tel = #{tel}, intro = #{intro} where tno = #{tno}
+    </update>
 </mapper>

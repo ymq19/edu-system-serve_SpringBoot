@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.system.serve.mapper.teacher.TeachingTaskMapper">
+    <!-- 学生 -->
     <select id="getTeachNotice" resultType="edu.system.serve.pojo.teacher.TeachingTask">
         SELECT title, content, time FROM teaching_tasks WHERE cno IN ( SELECT cno FROM sc WHERE sno = #{sno}) limit ${limitNum}
     </select>
@@ -11,5 +12,9 @@
     </select>
     <select id="getAllTeachNoticeBySno" resultType="edu.system.serve.pojo.teacher.TeachingTask">
         SELECT title, content, time FROM teaching_tasks WHERE cno = #{cno}
+    </select>
+    <!-- 教师 -->
+    <select id="getTTeachNotice" resultType="edu.system.serve.pojo.teacher.TeachingTask">
+        select title, content, time from teaching_tasks where tno = #{tno} limit ${limitNum}
     </select>
 </mapper>
