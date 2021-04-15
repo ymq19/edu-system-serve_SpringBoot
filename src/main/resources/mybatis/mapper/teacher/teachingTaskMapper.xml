@@ -17,4 +17,13 @@
     <select id="getAllTeachNoticeByTno" resultType="edu.system.serve.pojo.teacher.TeachingTask">
         select title, content, time from teaching_tasks where cno = #{cno}
     </select>
+    <update id="updateTeachNotice" parameterType="map">
+        update teaching_tasks set title = #{title}, content = #{content} where tno = #{tno} and cno = #{cno} and time = #{time}
+    </update>
+    <delete id="deleteTeachNotice">
+        delete from teaching_tasks where tno = #{tno} and cno = #{cno} and time = #{time}
+    </delete>
+    <insert id="insertTeachNotice" parameterType="map">
+        insert into teaching_tasks values(#{tno}, #{cno}, #{title}, #{content}, #{time})
+    </insert>
 </mapper>

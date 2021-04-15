@@ -1,5 +1,8 @@
 package edu.system.serve.pojo.teacher;
 
+import io.swagger.annotations.ApiModel;
+
+@ApiModel(description = "教学任务信息")
 public class TeachingTask {
     private String tno;
     private String cno;

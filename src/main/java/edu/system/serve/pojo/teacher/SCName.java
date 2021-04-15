@@ -1,7 +1,9 @@
 package edu.system.serve.pojo.teacher;
 
 import edu.system.serve.pojo.student.SC;
+import io.swagger.annotations.ApiModel;
 
+@ApiModel(description = "继承SC")
 public class SCName extends SC {
     private String sname;
 

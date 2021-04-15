@@ -1,5 +1,6 @@
 package edu.system.serve.service.teacher.Impl;
 
+import com.alibaba.fastjson.JSON;
 import edu.system.serve.mapper.student.CourseMapper;
 import edu.system.serve.mapper.teacher.TeachingTaskMapper;
 import edu.system.serve.pojo.student.Course;
@@ -78,6 +79,42 @@ public class TeachingTaskServiceImpl implements TeachingTaskService {
 
         map.put("tasks", teachingTaskMapper.getAllTeachNoticeByTno(cno));
 
+        return map;
+    }
+
+    @Transactional
+    @Override
+    public Map<String, String> updateTeachNotice(String tno, String cno, String task) {
+        Map<String, String> map = new HashMap<>();
+        Map<String, String> taskMap = JSON.parseObject(task, Map.class);
+
+        taskMap.put("tno", tno);
+        taskMap.put("cno", cno);
+
+        teachingTaskMapper.updateTeachNotice(taskMap);
+        map.put("message", "教学任务修改成功");
+        return map;
+    }
+
+    @Transactional
+    @Override
+    public Map<String, String> deleteTeachNotice(String tno, String cno, String time) {
+        Map<String, String> timeMap = JSON.parseObject(time, Map.class);
+        Map<String, String> map = new HashMap<>();
+
+        teachingTaskMapper.deleteTeachNotice(tno, cno, timeMap.get("time"));
+        map.put("message", "教学任务删除成功");
+        return map;
+    }
+
+    @Override
+    public Map<String, String> insertTeachNotice(String tno, String cno, Map<String, String> notice) {
+        Map<String, String> map = new HashMap<>();
+
+        notice.put("tno", tno);
+        notice.put("cno",cno);
+        teachingTaskMapper.insertTeachNotice(notice);
+        map.put("message", "教学任务新增成功");
         return map;
     }
 }

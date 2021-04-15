@@ -14,4 +14,7 @@ public interface TeachingTaskService {
     Map<String, List<TeachingTask>> getTTeachNotice(String tno, String limitNum);
     Map<String, List> getAllTTeachNotice(String tno);
     Map<String, List<TeachingTask>> getAllTeachNoticeByTno(String cno);
+    Map<String, String> updateTeachNotice(String tno, String cno, String task);
+    Map<String, String> deleteTeachNotice(String tno, String cno, String time);
+    Map<String, String> insertTeachNotice(String tno, String cno, Map<String, String> notice);
 }
