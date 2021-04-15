@@ -1,12 +1,9 @@
 package edu.system.serve.service.student.Impl;
 
-import com.alibaba.fastjson.JSON;
 import edu.system.serve.mapper.student.UserMapper;
 import edu.system.serve.pojo.student.User;
-import edu.system.serve.service.TokenService;
 import edu.system.serve.service.student.UserService;
 import edu.system.serve.utils.FileUpload;
-import edu.system.serve.utils.StatusCode;
 import edu.system.serve.utils.UserLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,13 +31,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Map<String, String> addAvatar(String username, MultipartFile imgUrl) {
-        FileUpload fileUpload = new FileUpload(imgUrl);
-        Map<String, String> map = new HashMap<>();
-        String fileUrl = fileUpload.upload();
+        UserLogin<UserMapper> userLogin = new UserLogin<>(userMapper);
 
-        userMapper.addAvatar(username, fileUrl);
-        map.put("url", fileUrl);
-        return map;
+        return userLogin.addAvatar(username, imgUrl);
     }
 
     @Transactional

@@ -12,6 +12,6 @@ import java.util.Map;
 @Repository
 public interface UserMapper extends BaseUserMapper {
 //    List<User> queryUser(String username, String password);
-    void addAvatar(String username, String imgUrl);
+//    void addAvatar(String username, String imgUrl);
 //    void updatePassword(String username, String password);
 }

@@ -6,6 +6,9 @@
     <select id="queryUser" resultType="edu.system.serve.pojo.student.User">
         select * from teacher_user where username = #{username} and password = #{password}
     </select>
+    <update id="addAvatar">
+        update teacher_user set avatar = #{imgUrl} where username = #{username}
+    </update>
     <update id="updatePassword">
         update teacher_user set password = #{password} where username = #{username}
     </update>

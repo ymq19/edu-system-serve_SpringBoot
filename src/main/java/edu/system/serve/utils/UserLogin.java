@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import edu.system.serve.mapper.BaseUserMapper;
 import edu.system.serve.pojo.student.User;
 import edu.system.serve.service.TokenService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class UserLogin<T extends BaseUserMapper>{
 
-    private T userMapper;
+    private final T userMapper;
 
     public UserLogin(T userMapper) {
         this.userMapper = userMapper;
@@ -54,5 +54,16 @@ public class UserLogin<T extends BaseUserMapper>{
         stringMap.put("status", StatusCode.ERROR_CODE);
 
         return stringMap;
+    }
+
+    // 添加头像/修改头像
+    public Map<String, String> addAvatar(String username, MultipartFile imgUrl) {
+        FileUpload fileUpload = new FileUpload(imgUrl);
+        Map<String, String> map = new HashMap<>();
+        String fileUrl = fileUpload.upload();
+
+        userMapper.addAvatar(username, fileUrl);
+        map.put("url", fileUrl);
+        return map;
     }
 }
