@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
     public Map<String, Object> queryUser(String username, String password) {
         List<User> userList = userMapper.queryUser(username, password);
 
-        UserLogin userLogin = new UserLogin();
+        UserLogin<UserMapper> userLogin = new UserLogin<>(userMapper);
         return userLogin.login(userList);
     }
 
@@ -46,19 +46,8 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public Map<String, Object> updatePassword(String username, String passwordSet) {
-        Map<String, String> map = JSON.parseObject(passwordSet, Map.class);
-        // 密码是否输入正确
-        if (userMapper.queryUser(username, map.get("oldPassword")).size() != 0) {
-            userMapper.updatePassword(username, map.get("password"));
-            Map<String, Object> stringMap = new HashMap<>();
+        UserLogin<UserMapper> userLogin = new UserLogin<>(userMapper);
 
-            stringMap.put("status", StatusCode.SUCCESS_CODE);
-            return stringMap;
-        }
-
-        Map<String, Object> stringMap = new HashMap<>();
-        stringMap.put("status", StatusCode.ERROR_CODE);
-
-        return stringMap;
+        return userLogin.passwordValid(username, passwordSet);
     }
 }
