@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
         return userLogin.login(userList);
     }
 
+    @Transactional
     @Override
     public Map<String, String> addAvatar(String username, MultipartFile imgUrl) {
         UserLogin<UserMapper> userLogin = new UserLogin<>(userMapper);

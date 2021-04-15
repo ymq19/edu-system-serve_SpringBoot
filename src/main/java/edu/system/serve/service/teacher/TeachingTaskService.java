@@ -12,4 +12,6 @@ public interface TeachingTaskService {
     Map<String, List<TeachingTask>> getAllTeachNoticeBySno(String cno);
     // 教师
     Map<String, List<TeachingTask>> getTTeachNotice(String tno, String limitNum);
+    Map<String, List> getAllTTeachNotice(String tno);
+    Map<String, List<TeachingTask>> getAllTeachNoticeByTno(String cno);
 }

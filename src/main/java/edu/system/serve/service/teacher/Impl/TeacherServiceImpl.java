@@ -7,6 +7,7 @@ import edu.system.serve.pojo.teacher.Teacher;
 import edu.system.serve.service.teacher.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +27,7 @@ public class TeacherServiceImpl implements TeacherService {
         return map;
     }
 
+    @Transactional
     @Override
     public Map<String, String> updateProfile(String tno, Teacher teacher) {
         Map<String, String> map = new HashMap<>();

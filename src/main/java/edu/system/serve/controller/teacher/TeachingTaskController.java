@@ -36,4 +36,14 @@ public class TeachingTaskController {
     public Map<String, List<TeachingTask>> getTTeachTask(@PathVariable String tno, @RequestParam String limit) {
         return teachingTaskService.getTTeachNotice(tno, limit);
     }
+
+    @GetMapping("/teacher/info/{tno}/tasks/all")
+    public Map<String, List> getAllTTeachTask(@PathVariable String tno) {
+        return teachingTaskService.getAllTTeachNotice(tno);
+    }
+
+    @GetMapping("/teacher/info/{tno}/course/{cno}/tasks/all")
+    public Map<String, List<TeachingTask>> getAllTeachTaskByTno(@PathVariable String cno) {
+        return teachingTaskService.getAllTeachNoticeByTno(cno);
+    }
 }

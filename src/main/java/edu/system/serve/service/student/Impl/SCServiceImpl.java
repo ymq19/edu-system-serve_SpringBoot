@@ -6,6 +6,7 @@ import edu.system.serve.pojo.student.SC;
 import edu.system.serve.service.student.SCService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +44,7 @@ public class SCServiceImpl implements SCService {
         return map;
     }
 
+    @Transactional
     @Override
     public Map<String, String> addCourse(String data) {
         Map<String, String> snoCno = JSON.parseObject(data, Map.class);
@@ -54,6 +56,7 @@ public class SCServiceImpl implements SCService {
         return map;
     }
 
+    @Transactional
     @Override
     public Map<String, String> deleteCourse(String data) {
         Map<String, String> snoCno = JSON.parseObject(data, Map.class);

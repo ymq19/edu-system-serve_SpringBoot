@@ -53,6 +53,7 @@ public class TeacherSCServiceImpl implements TeacherSCService {
         return map;
     }
 
+    @Transactional
     @Override
     public Map<String, String> setGrade(String sno, String cno, String data) {
         Map<String, String> map = new HashMap<>();

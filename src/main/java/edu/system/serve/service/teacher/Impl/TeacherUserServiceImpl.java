@@ -7,6 +7,7 @@ import edu.system.serve.service.teacher.TeacherUserService;
 import edu.system.serve.utils.UserLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -28,6 +29,7 @@ class TeacherUserServiceImpl implements TeacherUserService {
         return userLogin.login(userList);
     }
 
+    @Transactional
     @Override
     public Map<String, String> addAvatar(String username, MultipartFile imgUrl) {
         UserLogin<TeacherUserMapper> userLogin = new UserLogin<>(userMapper);
@@ -35,6 +37,7 @@ class TeacherUserServiceImpl implements TeacherUserService {
         return userLogin.addAvatar(username, imgUrl);
     }
 
+    @Transactional
     @Override
     public Map<String, Object> updatePassword(String username, String passwordSet) {
         UserLogin<TeacherUserMapper> userLogin = new UserLogin<>(userMapper);

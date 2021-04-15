@@ -37,7 +37,7 @@ public class TeachingTaskServiceImpl implements TeachingTaskService {
         List<Course> courses = courseMapper.getCourseName(sno);
         Map<String, List> map = new HashMap<>();
         if (courses.size() != 0) {
-            map.put("notice", teachingTaskMapper.getAllTeachNotice(courses.get(0).getCno()));
+            map.put("notice", teachingTaskMapper.getAllTeachNoticeBySno(courses.get(0).getCno()));
             map.put("course", courses);
         }
         return map;
@@ -57,6 +57,27 @@ public class TeachingTaskServiceImpl implements TeachingTaskService {
         Map<String, List<TeachingTask>> map = new HashMap<>();
 
         map.put("result", teachingTaskMapper.getTTeachNotice(tno, limitNum));
+        return map;
+    }
+
+    @Override
+    public Map<String, List> getAllTTeachNotice(String tno) {
+        Map<String, List> map = new HashMap<>();
+        List<Course> courses = courseMapper.getCourseNameByTno(tno);
+
+        if (courses.size() != 0) {
+            map.put("tasks", teachingTaskMapper.getAllTeachNoticeByTno(courses.get(0).getCno()));
+            map.put("course", courses);
+        }
+        return map;
+    }
+
+    @Override
+    public Map<String, List<TeachingTask>> getAllTeachNoticeByTno(String cno) {
+        Map<String, List<TeachingTask>> map = new HashMap<>();
+
+        map.put("tasks", teachingTaskMapper.getAllTeachNoticeByTno(cno));
+
         return map;
     }
 }

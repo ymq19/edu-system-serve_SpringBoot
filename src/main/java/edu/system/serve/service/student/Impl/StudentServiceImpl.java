@@ -6,6 +6,7 @@ import edu.system.serve.pojo.student.Student;
 import edu.system.serve.service.student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +26,7 @@ public class StudentServiceImpl implements StudentService {
         return map;
     }
 
+    @Transactional
     @Override
     public void updateProfile(String sno, String data) {
         Map<String, String> map = JSON.parseObject(data, Map.class);

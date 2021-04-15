@@ -6,6 +6,7 @@ import edu.system.serve.pojo.student.Evaluation;
 import edu.system.serve.service.student.EvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +26,7 @@ public class EvaluationServiceImpl implements EvaluationService {
         return map;
     }
 
+    @Transactional
     @Override
     public Map<String, String> setEvaluation(String data) {
         // json转map
