@@ -6,4 +6,10 @@
     <select id="getGrade" resultType="edu.system.serve.pojo.teacher.SCName">
         SELECT FIRST .sno, SECOND .sname, cname, grade, gradepo FROM sc FIRST, student SECOND, course THRID WHERE FIRST.sno = SECOND.sno and FIRST.cno = THRID.cno and tno = #{tno} limit ${limitNum}
     </select>
+    <select id="getAllGrade" resultType="edu.system.serve.pojo.teacher.SCName">
+        select first. sno, sname, grade, gradepo from sc first, student second where first.sno = second.sno and cno = #{cno}
+    </select>
+    <update id="setGrade">
+        update sc set grade = #{grade}, gradepo = #{gradePo} where sno = #{sno} and cno = #{cno}
+    </update>
 </mapper>

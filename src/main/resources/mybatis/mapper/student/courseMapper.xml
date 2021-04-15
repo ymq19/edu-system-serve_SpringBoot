@@ -36,4 +36,7 @@
     <select id="getCourseName" resultType="edu.system.serve.pojo.student.Course">
         SELECT sc.cno, cname from sc, course where sno = #{sno} and  sc.cno = course.cno
     </select>
+    <select id="getCourseNameByTno" resultType="edu.system.serve.pojo.student.Course">
+        select distinct cno, cname from course where tno = #{tno}
+    </select>
 </mapper>

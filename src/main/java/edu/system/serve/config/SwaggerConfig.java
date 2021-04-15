@@ -36,7 +36,7 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .groupName("教师接口")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("edu.system.server.controller.teacher"))
+                .apis(RequestHandlerSelectors.basePackage("edu.system.serve.controller.teacher"))
                 .build();
     }
 
