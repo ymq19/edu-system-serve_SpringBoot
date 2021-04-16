@@ -40,6 +40,16 @@ public class SwaggerConfig {
                 .build();
     }
 
+    @Bean
+    public Docket docket3() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .groupName("管理员接口")
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("edu.system.serve.controller.manager"))
+                .build();
+    }
+
     // 配置Swagger信息 apiInfo
     private ApiInfo apiInfo() {
 

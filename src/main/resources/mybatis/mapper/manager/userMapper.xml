@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.system.serve.mapper.manager.ManagerUserMapper">
+    <select id="queryUser" resultType="edu.system.serve.pojo.student.User">
+        select * from super_user where username = #{username} and password = #{password}
+    </select>
+    <update id="addAvatar">
+        update super_user set avatar = #{imgUrl} where username = #{username}
+    </update>
+    <update id="updatePassword">
+        update super_user set password = #{password} where username = #{username}
+    </update>
+</mapper>
