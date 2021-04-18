@@ -1,6 +1,7 @@
 package edu.system.serve.controller.student;
 
 import edu.system.serve.pojo.student.User;
+import edu.system.serve.service.manager.ManagerUserService;
 import edu.system.serve.service.student.UserService;
 import edu.system.serve.service.teacher.Impl.TeacherUserServiceImpl;
 import edu.system.serve.service.teacher.TeacherUserService;
@@ -18,6 +19,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private TeacherUserService teacherUserService;
+    @Autowired
+    private ManagerUserService managerUserService;
 
     @PostMapping("/login")
     public Map<String, Object> userLogin(@RequestBody User user) {
@@ -30,6 +33,8 @@ public class UserController {
     public Map<String, String> addAvatar(@PathVariable String username, @RequestParam MultipartFile image, @RequestParam(defaultValue = "stu") String userType) {
         if (userType.equals("teach")) {
             return teacherUserService.addAvatar(username, image);
+        } else if (userType.equals("mana")) {
+            return managerUserService.addAvatar(username, image);
         }
 
         return userService.addAvatar(username, image);
