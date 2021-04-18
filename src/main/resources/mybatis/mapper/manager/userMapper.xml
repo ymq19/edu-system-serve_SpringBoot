@@ -12,4 +12,22 @@
     <update id="updatePassword">
         update super_user set password = #{password} where username = #{username}
     </update>
+    <select id="queryStudent" resultType="edu.system.serve.pojo.student.User">
+        select username, name from user limit #{linmitNum}
+    </select>
+    <select id="queryAllStudent" resultType="edu.system.serve.pojo.student.User">
+        select username, name from user
+    </select>
+    <select id="queryTeacher" resultType="edu.system.serve.pojo.student.User">
+        select username, name from teacher_user limit #{limitNum}
+    </select>
+    <select id="queryAllTeacher" resultType="edu.system.serve.pojo.student.User">
+        select username, name from teacher_user
+    </select>
+    <select id="queryManager" resultType="edu.system.serve.pojo.student.User">
+        select username, name from super_user limit #{limitNum}
+    </select>
+    <select id="queryAllManager" resultType="edu.system.serve.pojo.student.User">
+        select username, name from super_user
+    </select>
 </mapper>

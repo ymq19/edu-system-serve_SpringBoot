@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,5 +39,44 @@ public class ManagerUserServiceImpl implements ManagerUserService {
         UserLogin<ManagerUserMapper> userLogin = new UserLogin<>(managerUserMapper);
 
         return userLogin.addAvatar(username, imgUrl);
+    }
+
+    @Override
+    public Map<String, List<User>> queryStudent(String limitNum) {
+        Map<String, List<User>> map = new HashMap<>();
+
+        map.put("result", managerUserMapper.queryStudent(Integer.parseInt(limitNum)));
+        return map;
+    }
+
+    @Override
+    public Map<String, List<User>> queryTeacher(String limitNum) {
+        Map<String, List<User>> map = new HashMap<>();
+
+        map.put("result", managerUserMapper.queryTeacher(Integer.parseInt(limitNum)));
+        return map;
+    }
+
+    @Override
+    public Map<String, List<User>> queryManager(String limitNum) {
+        Map<String, List<User>> map = new HashMap<>();
+
+        map.put("result", managerUserMapper.queryManager(Integer.parseInt(limitNum)));
+        return map;
+    }
+
+    @Override
+    public Map<String, List<User>> queryAllUser(String userType) {
+        Map<String, List<User>> map = new HashMap<>();
+
+        if (userType.equals("student")) {
+            map.put("result", managerUserMapper.queryAllStudent());
+        } else if (userType.equals("management")) {
+            map.put("result", managerUserMapper.queryAllManager());
+        } else {
+            map.put("result", managerUserMapper.queryAllTeacher());
+        }
+
+        return map;
     }
 }

@@ -5,6 +5,7 @@ import edu.system.serve.service.manager.ManagerUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -22,5 +23,25 @@ public class ManagerUserController {
     @PutMapping("/super-user/reset/{username}")
     public Map<String, Object> updatePassword(@PathVariable String username, @RequestBody String data) {
         return managerUserService.updatePassword(username, data);
+    }
+
+    @GetMapping("/super-user/user/student")
+    public Map<String, List<User>> queryStudent(@RequestParam String limit) {
+        return managerUserService.queryStudent(limit);
+    }
+
+    @GetMapping("/super-user/user/teacher")
+    public Map<String, List<User>> queryTeacher(@RequestParam String limit) {
+        return managerUserService.queryTeacher(limit);
+    }
+
+    @GetMapping("/super-user/user/management")
+    public Map<String, List<User>> queryManager(@RequestParam String limit) {
+        return managerUserService.queryManager(limit);
+    }
+
+    @GetMapping("/super-user/user/all/{userType}")
+    public Map<String, List<User>> queryUserType(@PathVariable String userType) {
+        return managerUserService.queryAllUser(userType);
     }
 }
