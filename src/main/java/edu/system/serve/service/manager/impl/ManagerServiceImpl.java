@@ -70,7 +70,7 @@ public class ManagerServiceImpl implements ManagerService {
                 student.get("hobby"),
                 student.get("intro"));
         mapper.updateStudentProfile(student1);
-        map.put("result", "学生信息修改成功");
+        map.put("message", "学生信息修改成功");
         return map;
     }
 
@@ -80,7 +80,7 @@ public class ManagerServiceImpl implements ManagerService {
         Map<String, String> map = new HashMap<>();
 
         mapper.deleteStudent(sno);
-        map.put("result", "删除学生成功");
+        map.put("message", "删除学生成功");
         return map;
     }
 }

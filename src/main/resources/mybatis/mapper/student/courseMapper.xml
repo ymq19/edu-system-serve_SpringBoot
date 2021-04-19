@@ -6,6 +6,7 @@
     <resultMap id="courseQuery" type="edu.system.serve.pojo.student.Course">
         <id property="cno" column="cno" />
         <result property="cname" column="cname" />
+        <result property="cpno" column="cpno" />
         <result property="prename" column="prename" />
         <result property="ccredit" column="ccredit" />
         <result property="tno" column="tno" />
@@ -18,6 +19,7 @@
     <resultMap id="courseAllQuery" type="edu.system.serve.pojo.student.Course">
         <id property="cno" column="cno"/>
         <result property="cname" column="cname" />
+        <result property="cpno" column="cpno" />
         <result property="prename" column="prename" />
         <result property="ccredit" column="ccredit" />
         <result property="tno" column="tno" />

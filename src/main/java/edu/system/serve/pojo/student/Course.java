@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiModel;
 public class Course {
     private String cno;
     private String cname;
+    private String cpno;
     private String prename;
     private Integer ccredit;
     private String tno;
@@ -24,13 +25,31 @@ public class Course {
         this.teacher = teacher;
     }
 
-    public Course(String cno, String cname, String prename, Integer ccredit, String tno, Integer capacity) {
+    public Course(String cno, String cname, String cpno, String prename, Integer ccredit, String tno, Integer capacity) {
         this.cno = cno;
         this.cname = cname;
+        this.cpno = cpno;
         this.prename = prename;
         this.ccredit = ccredit;
         this.tno = tno;
         this.capacity = capacity;
+    }
+
+    public Course(String cno, String cname, String cpno, Integer ccredit, String tno, Integer capacity) {
+        this.cno = cno;
+        this.cname = cname;
+        this.cpno = cpno;
+        this.ccredit = ccredit;
+        this.tno = tno;
+        this.capacity = capacity;
+    }
+
+    public String getCpno() {
+        return cpno;
+    }
+
+    public void setCpno(String cpno) {
+        this.cpno = cpno;
     }
 
     public String getCno() {
@@ -77,20 +96,21 @@ public class Course {
         return capacity;
     }
 
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
+    }
+
     @Override
     public String toString() {
         return "Course{" +
                 "cno='" + cno + '\'' +
                 ", cname='" + cname + '\'' +
+                ", cpno='" + cpno + '\'' +
                 ", prename='" + prename + '\'' +
                 ", ccredit=" + ccredit +
                 ", tno='" + tno + '\'' +
                 ", capacity=" + capacity +
                 ", teacher=" + teacher +
                 '}';
-    }
-
-    public void setCapacity(Integer capacity) {
-        this.capacity = capacity;
     }
 }
