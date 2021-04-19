@@ -9,4 +9,16 @@
     <update id="updateProfile" parameterType="edu.system.serve.pojo.manager.Manager">
         update management set name = #{name}, sex = #{sex}, age = #{age}, email = #{email}, tel = #{tel}, intro = #{intro} where mno = #{mno}
     </update>
+    <select id="getStudentProfile" resultType="edu.system.serve.pojo.student.Student">
+        select sno, sname, school from student limit #{limitNum}
+    </select>
+    <select id="getAllStudentProfile" resultType="edu.system.serve.pojo.student.Student">
+        select * from student
+    </select>
+    <update id="updateStudentProfile" parameterType="edu.system.serve.pojo.student.Student">
+        update student set sname = #{sname}, sex = #{sex}, sage = #{sage}, admi_date = #{admi_date}, school = #{school}, sdept = #{sdept}, email = #{email}, tel = #{tel}, hobby = #{hobby}, intro = #{intro} where sno = #{sno}
+    </update>
+    <delete id="deleteStudent">
+        delete from student where sno = #{sno}
+    </delete>
 </mapper>
