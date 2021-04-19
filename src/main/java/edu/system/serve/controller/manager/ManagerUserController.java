@@ -44,4 +44,9 @@ public class ManagerUserController {
     public Map<String, List<User>> queryUserType(@PathVariable String userType) {
         return managerUserService.queryAllUser(userType);
     }
+
+    @PutMapping("/super-user/user/{userType}/{username}")
+    public Map<String, String> updateUser(@PathVariable String userType, @PathVariable String username, @RequestBody User data) {
+        return managerUserService.updateUser(userType, username, data);
+    }
 }

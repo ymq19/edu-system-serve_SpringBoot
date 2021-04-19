@@ -30,4 +30,13 @@
     <select id="queryAllManager" resultType="edu.system.serve.pojo.student.User">
         select username, name from super_user
     </select>
+    <update id="updateStudent">
+        update user set name = #{name} where username = #{username}
+    </update>
+    <update id="updateTeacher">
+        update teacher_user set name = #{name} where username = #{username}
+    </update>
+    <update id="updateManager">
+        update super_user set name = #{name} where username = #{username}
+    </update>
 </mapper>

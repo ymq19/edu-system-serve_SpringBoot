@@ -18,4 +18,6 @@ public interface ManagerUserService {
     // 查找管理员用户
     Map<String, List<User>> queryManager(String limitNum);
     Map<String, List<User>> queryAllUser(String userType);
+    // 编辑用户
+    Map<String, String> updateUser(String userType, String username, User user);
 }

@@ -79,4 +79,21 @@ public class ManagerUserServiceImpl implements ManagerUserService {
 
         return map;
     }
+
+    @Override
+    public Map<String, String> updateUser(String userType, String username, User user) {
+        Map<String, String> map = new HashMap<>();
+
+        if (userType.equals("student")) {
+            managerUserMapper.updateStudent(username, user.getName());
+            map.put("result", "学生用户昵称修改成功");
+        } else if (userType.equals("management")) {
+            managerUserMapper.updateManager(username, user.getName());
+            map.put("result", "管理员用户昵称修改成功");
+        } else if (userType.equals("teacher")) {
+            managerUserMapper.updateTeacher(username, user.getName());
+            map.put("result", "教师用户昵称修改成功");
+        }
+        return map;
+    }
 }
