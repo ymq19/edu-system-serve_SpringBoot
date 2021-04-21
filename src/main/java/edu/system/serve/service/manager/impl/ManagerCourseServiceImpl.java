@@ -50,7 +50,6 @@ public class ManagerCourseServiceImpl implements ManagerCourseService {
     public Map<String, String> addCourse(Map<String, String> map) {
         Map<String, String> courseMap = new HashMap<>();
 
-        System.out.println(map);
         Course course = new Course(
                 map.get("cno"),
                 map.get("name"),
