@@ -11,4 +11,5 @@ import java.util.List;
 public interface TeacherMapper {
     List<Teacher> getProfile(String tno);
     void updateProfile(String tno, String name, String sex, Integer age, String email, String tel, String intro);
+    List<Teacher> getTeacherName(String tno);
 }

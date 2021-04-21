@@ -8,4 +8,5 @@ import java.util.Map;
 public interface TeacherService {
     Map<String, List<Teacher>> getProfile(String tno);
     Map<String, String> updateProfile(String tno, Teacher teacher);
+    Map<String, List<Teacher>> getTeacherName(String tno);
 }

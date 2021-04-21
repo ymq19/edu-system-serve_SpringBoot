@@ -33,4 +33,34 @@ public class ManagerCourseServiceImpl implements ManagerCourseService {
         map.put("message", "课程修改成功");
         return map;
     }
+
+    @Transactional
+    @Override
+    public Map<String, String> deleteCourse(String cno) {
+        Map<String, String> map = new HashMap<>();
+
+        mapper.updateDeleteCourse(cno);
+        mapper.deleteCourse(cno);
+        map.put("message", "课程删除成功");
+        return map;
+    }
+
+    @Transactional
+    @Override
+    public Map<String, String> addCourse(Map<String, String> map) {
+        Map<String, String> courseMap = new HashMap<>();
+
+        System.out.println(map);
+        Course course = new Course(
+                map.get("cno"),
+                map.get("name"),
+                map.get("cpno"),
+                Integer.parseInt(map.get("credit")),
+                map.get("tno"),
+                Integer.parseInt(map.get("capacity"))
+        );
+        mapper.addCourse(course);
+        courseMap.put("message", "课程添加成功");
+        return courseMap;
+    }
 }

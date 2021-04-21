@@ -9,4 +9,7 @@
     <update id="updateProfile">
         update teacher set name = #{name}, sex = #{sex}, age = #{age}, email = #{email}, tel = #{tel}, intro = #{intro} where tno = #{tno}
     </update>
+    <select id="getTeacherName" resultType="edu.system.serve.pojo.teacher.Teacher">
+        select name from teacher where tno = #{tno}
+    </select>
 </mapper>

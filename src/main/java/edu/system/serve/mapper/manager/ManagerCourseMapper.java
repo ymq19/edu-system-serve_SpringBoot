@@ -15,4 +15,5 @@ public interface ManagerCourseMapper {
     void addCourse(Course course);
     // 删除课程
     void deleteCourse(String cno);
+    void updateDeleteCourse(String cno);
 }

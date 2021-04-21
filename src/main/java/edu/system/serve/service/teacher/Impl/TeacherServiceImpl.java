@@ -43,4 +43,12 @@ public class TeacherServiceImpl implements TeacherService {
         map.put("message", "个人信息修改成功");
         return map;
     }
+
+    @Override
+    public Map<String, List<Teacher>> getTeacherName(String tno) {
+        Map<String, List<Teacher>> map = new HashMap<>();
+
+        map.put("result", teacherMapper.getTeacherName(tno));
+        return map;
+    }
 }

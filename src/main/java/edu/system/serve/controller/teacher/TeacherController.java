@@ -24,4 +24,9 @@ public class TeacherController {
     public Map<String, String> updateProfile(@PathVariable String tno, @RequestBody Teacher teacher) {
         return teacherService.updateProfile(tno, teacher);
     }
+
+    @GetMapping("/super-user/info/teacher/{tno}")
+    public Map<String, List<Teacher>> getTeacherName(@PathVariable String tno) {
+        return teacherService.getTeacherName(tno);
+    }
 }

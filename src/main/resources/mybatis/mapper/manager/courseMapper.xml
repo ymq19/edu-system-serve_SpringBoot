@@ -6,4 +6,13 @@
     <update id="updateCourse">
         update course set cname = #{cname}, cpno = #{cpno}, ccredit = #{ccredit}, tno = #{tno}, capacity = #{capacity} where cno = #{cno}
     </update>
+    <delete id="deleteCourse">
+        delete from course where cno = #{cno}
+    </delete>
+    <update id="updateDeleteCourse">
+        update course set cpno = NULL where cpno = #{cno}
+    </update>
+    <insert id="addCourse">
+        insert into course(cno, cname, cpno, ccredit, tno, capacity) values(#{cno}, #{cname}, #{cpno}, #{ccredit} , #{tno}, #{capacity})
+    </insert>
 </mapper>
